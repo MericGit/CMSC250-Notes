@@ -1,0 +1,252 @@
+\chapter{Discrete Structures Intro Statements}
+\dfn{Statements}{Declarative sentence with truth value 
+		\begin{itemize}
+		  \item Non subjective, contains defined true or             false (Never both)
+            \item Logical, non meaningless. Statements mean something
+            \item Does not need to be verifiable:  Ex.\begin{itemize}
+                \item There is exactly 12 people sneezing at this second
+                \item Aliens exist
+            \end{itemize}
+		\end{itemize}}
+\ex{Statement Examples}{\begin{itemize}
+    \item $2+2=4$
+    \item $2+2=0$
+    \item The sky is blue
+\end{itemize}}
+Note above how both $2+2=4$ and $2+2=0$ are both valid statements despite them contradicting each other. Both have a defined true-false value and thus can both be perfectly valid as a statement. $2+2=4$ is always true, and $2+2=0$ is always false, no question about it.
+\ex{Non-Statement Examples}{\begin{itemize}
+    \item $x>30$
+    \item CMSC250 is hard
+\end{itemize}}
+The first line is not a statement as $x>30$ is subjective. What is x? if x is 40 then the statement is true, but if x is 0 then the statement is false. Thus there is no defined true-false value. Until x is defined, it is not a statement.
+
+Similarly the second non-statement is false. According to what metric is CMSC250 hard? Some people will agree or disagree, making it subjective and thus not a statement. We can easily fix the two above into statements however with a few quick word changes
+\ex{Fixed Statements}{\begin{itemize}
+    \item $x=50: x>30$
+    \item I think CMSC250 is hard
+\end{itemize}}
+These are now both valid statements, as with a defined x value, we know x will always be greater than 30.
+Similarly we defined the second statement by adjusting it from a vague subjective thought, to a statement of my opinion. A statement of my opinion is always true or false.
+\section{Statement Notation}
+Statements are notated at all times with a lowercase letter, I.E.
+$s=$ the sky is blue. Additionally there are various special symbols that can be used to modify statements and their relation to other statements
+\dfn{Logical Operators}{
+\begin{itemize}
+    \item $\neg$ or $\sim$ symbolizes Negation (Not)
+    \item $\wedge$ symbolizes Conjunction (And)
+    \item $\vee$ symbolizes Disjunction (Or)
+    \item $\oplus$ symbolizes mutually exclusive and/or (XOR)
+    \begin{itemize}
+        \item *Note: We will not use XOR as it can be expressed with a combination of conjunctions $\&$ and disjunctions $\vee$
+        \item Ex: $(p{\wedge}{\neg}q) {\vee} ({\neg}p{\wedge}q)$
+        \item p and not q or not p and q 
+    \end{itemize}
+\end{itemize}
+}
+\ex{Statement Examples}{Take these two statements:
+
+$s:$ French fries are green
+
+$q:$ The sky is blue\begin{itemize}
+\item{Conjunction Example: s $\wedge$ q - False}
+\item{Disjunction Example: s $\vee$ q - True}
+\item{Not example: $\neg$ s - True}
+\end{itemize}}
+Like more traditional math, Statement Symbols have a defined order of operations in a sense that notation matters. Read left to right, $\neg$ always takes priority. Following this, $\wedge$ takes priority over $\vee$ in the absence of ().
+\qs{Statement Ordering}{Notate the following: Today I have a discussion or lecture and a presentation\begin{itemize}
+    \item p: I have a discussion
+    \item q: I have a lecture
+    \item r: I have a presentation
+\end{itemize}
+Now consider two possible notations: 
+\begin{itemize}
+    \item (p $\vee$ q) $\wedge$ r
+    \item p $\vee$ (q $\wedge$ r)
+\end{itemize}
+Both can be true, so we should use () to dictate what we mean, however in this case since $\wedge$ takes priority, B is correct. () is always optimal though
+\\
+\\
+Now consider this notation:
+\begin{itemize}
+    \item x $\wedge$ q $\implies$ r $\vee$ z $\Leftrightarrow$ t
+\end{itemize}
+This is (x $\wedge$ q) $\implies$ ((r $\vee$ z) $\Leftrightarrow$ t) as precedence is right associative 
+}
+Edge cases of statements. Not all statements are obviously a statement 
+\ex{Unusual Statements}{
+\begin{itemize}
+    \item Let x be any number between 20 and 50.
+$x>30$
+This is a statement, but is false as it is saying x is always greater than 30, but that is not true. However it is still a statement as x is defined 
+    \item This statement is false. This is not a statement as there is a paradox, and cannot have a true false value
+\end{itemize}}
+\dfn{Standard Conventions}{\begin{itemize}
+    \item True = 1
+    \item False = 0 
+    \item We will use these numerical values over t and f
+\end{itemize}}
+\section{Truth Tables}
+\ex{Truth Table}{
+Simple Example:
+\begin{tabular}{ |c|c| } 
+ \hline
+ p & $\neg$ p  \\ 
+ \hline
+ 0 & 1  \\ 
+ \hline
+ 1 & 0  \\ 
+ \hline
+\end{tabular}
+Another Example:
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ p & q & p$\wedge$q \\ 
+ \hline
+ 0 & 0 & 0 \\ 
+ \hline
+ 0 & 1 & 0 \\ 
+ \hline
+ 1 & 0 & 0 \\ 
+ \hline
+ 1 & 1 & 1 \\ 
+ \hline
+\end{tabular}
+And another:
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ p & q & p$\vee$q \\ 
+ \hline
+ 0 & 0 & 0 \\ 
+ \hline
+ 0 & 1 & 1 \\ 
+ \hline
+ 1 & 0 & 1 \\ 
+ \hline
+ 1 & 1 & 1 \\ 
+ \hline
+\end{tabular}
+}
+We always want to follow this ordering of truth tables values. Always go smallest to largest. It's binary but you can think of it as combining them together. Lets look at the last example, merging both rows we get $00 < 01 < 10 < 11$.
+
+For variable order we try and go alphabetical when listing them.
+
+Truth table lengths are exponential based upon the number of variables.
+\begin{itemize}
+    \item 1 var = 2 rows
+    \item 2 var = 4 rows
+    \item 3 var = 8 rows
+    \item n var = $2^n$ rows
+\end{itemize}
+\dfn{Contradiction}{
+A contradiction is a statement form that is always false regardless of the truth
+values of the individual statements substituted for its statement variables. AKA it always evaluates out to 0.
+\\
+The truth table for p $\wedge$ q $\neg$ p \\
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ p & $\neg$ p & p $\wedge$ $\neg$p   \\ 
+ \hline
+ 0 & 1 & 0  \\ 
+ \hline
+ 1 & 0 & 0  \\ 
+ \hline
+\end{tabular}
+\\
+}
+\dfn{Tautology}{A tautology is a statement that is always true regardless of the truth values of the 
+individual statements substituted for its statement variables. AKA it always evaluates out to 1 \\
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ p & $\neg$ p & p $\vee$ $\neg$p   \\ 
+ \hline
+ 0 & 1 & 1  \\ 
+ \hline
+ 1 & 0 & 1  \\ 
+ \hline
+\end{tabular}
+
+}
+\dfn{Equivalence}{
+Two statements are called logically equivalent if, and only if, they have identical 
+truth values for each possible substitution of statements for their statement 
+variables. Symbolized with: p $\equiv$ q. 
+\\
+Basically, if the two statements have the same truth tables results for same input values, they are logically equivalent 
+}
+\ex{Proving XOR}{
+Using truth tables we can construct a truth table for XOR.Any truth table that evaluates out to 0 1 1 0 is logically equivalent to XOR
+\\
+\begin{tabular}{ |c|c|c|c|c|c|c| } 
+ \hline
+ p & q & $\neg$p & $\neg$q & $(p{\wedge}{\neg}q)$ &$({\neg}p{\wedge}q)$  & $(p{\wedge}{\neg}q) {\vee} ({\neg}p{\wedge}q)$ \\ 
+ \hline
+ 0 & 0 & 1 & 1 & 0 & 0 & 0 \\ 
+ \hline
+ 0 & 1 & 1 & 0 & 0 & 1 & 1 \\ 
+ \hline
+ 1 & 0 & 0 & 1 & 1 & 0 & 1  \\ 
+ \hline
+ 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ 
+ \hline
+\end{tabular}
+}
+\section{Conditionals and Implications}
+\dfn{Implication Definition in English}{
+We can construct implications from statements:
+\\
+If I am in 250 lecture then it is Tuesday or Thursday
+\\
+It is Tuesday or Thursday if I am in 250 lecture
+\\
+I am in 250 lecture implies it is Tuesday or Thursday
+\begin{itemize}
+    \item p: I am in 250 lecture
+    \item q: It is Tuesday or Thursday
+\end{itemize}
+p $\implies$ q \\
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ In Lecture & Tuesday or Thursday & If I am in lecture then it is Tues/Thurs  \\ 
+ \hline
+ NO & NO & YES  \\ 
+ \hline
+ NO & YES & YES  \\ 
+ \hline
+ YES & NO & NO  \\ 
+ \hline
+ YES & YES & YES  \\ 
+ \hline
+\end{tabular}
+}
+Note how the above is not causal, it does not mean that I have to be in lecture to make it Tuesday or Thursday. It can be Tues/Thurs even if I'm not in lecture. It simply implies that I can only be in lecture on Tues/Thurs.
+\\
+\\
+Thus the converse implication of q $\implies$ p is not always true.
+\\
+\\
+\qs{Evaluating Inverse, Contrapositive}{
+How about the inverse? If p $\implies$ q then is $\neg$ p $\implies$ $\neg$ q? 
+\\
+No. If I'm not in lecture it doesn't mean it's not Tues or Thurs. (I might be sick) Thus neither the inverse nor converse always hold
+\\
+\\
+What about the contrapositive?
+\\
+Given p $\implies$ q then is $\neg$ q $\implies$ $\neg$ p?
+\\
+Yes. If it is not Tues/Thurs then it implies I am not in lecture, as lecture is only on Tues/Thurs. Thus, only the contrapositive always holds }
+\dfn{Converse, Inverse, Contrapositive}{
+In summary...
+\begin{itemize}
+    \item Converse - Not always true
+    \item Inverse - Not always true
+    \item Contrapositive - Always true 
+\end{itemize}
+}
+\nt{If the hypothesis is false, then p$\implies$q is vacuously true \\
+If I go to Mars, then I bring 12 pink elephants. 
+\\
+I go to mars = 0
+\\
+Vacuously true. Anything I say will be true because the initial hypothesis (I go to mars) is false.
+}
